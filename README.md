@@ -8,7 +8,7 @@
 
 ## 실행
 
-- 레포 클론 하고, ```sudo npm install --force``` 합니다.
+- 레포 클론 하고, ```npm install``` 합니다.
 - 이후 프로젝트에 .env 파일을 만들고 노션에서 https://www.notion.so/fetching/FETCHING > 사이드바의 팀문서 > 개발 > 백엔드 문서 > 환경변수 로 가서 blux-s3-uploader 하위 스니펫을 위에서 만든 .env 파일에 복붙합니다.
 - 이후 npm run 으로 돌릴 수 있는 커맨드들을 확인 후 돌리면 됩니다.
 
