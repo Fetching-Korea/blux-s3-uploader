@@ -1,0 +1,38 @@
+{
+  "name": "blux-s3-uploader",
+  "version": "1.0.0",
+  "description": "App to extract data, transform it into a csv file, and upload it to Blux s3 bucket.",
+  "main": "app.js",
+  "private": true,
+  "scripts": {
+    "build": "npm install && tsc",
+    "local-users": "ts-node ./src/app.ts -s users -l -c 1000",
+    "dev-users": "ts-node ./src/app.ts -s users -d -c 1000",
+    "main-users": "tsc && node ./dist/app.js -s users -c 1000",
+    "local-users-with-best-reviews": "ts-node ./src/app.ts -s users-with-best-reviews -l",
+    "local-users-with-expiring-points": "ts-node ./src/app.ts -s users-with-expiring-points -l",
+    "local-users-with-expiring-coupons": "ts-node ./src/app.ts -s users-with-expiring-coupons -l",
+    "local-test-users": "ts-node ./src/app.ts -s test-users -l"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/preset-env": "^7.24.6",
+    "@babel/preset-typescript": "^7.24.6",
+    "@jest/globals": "^29.7.0",
+    "@types/node": "^20.14.1",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.4"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.367.0",
+    "@aws-sdk/lib-storage": "^3.367.0",
+    "aws-sdk": "^2.1633.0",
+    "commander": "^12.1.0",
+    "csv-writer": "^1.6.0",
+    "dotenv": "^16.4.5",
+    "mysql2": "^3.10.0",
+    "ts-node": "^10.9.2"
+  }
+}
