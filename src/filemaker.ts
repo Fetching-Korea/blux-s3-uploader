@@ -14,7 +14,9 @@ export default class FileMaker {
             const chunk = await this.dao.selectUsers(currentId, chunkSize);
             console.log(`got ids from ${chunk[0]['id']} ~ ${chunk[chunk.length - 1]['id']}`);
             currentId = chunk[chunk.length-1]['id'];
-            chunk.map((each: RowDataPacket) => {
+            chunk.filter(e => e.user_type === 'USER' && e.user_status === 'ACTIVE').map((each: RowDataPacket) => {
+                delete each.user_type
+                delete each.user_status
                 users.push(this.decryptUserRow(each));
             })
         }

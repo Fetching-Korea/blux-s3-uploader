@@ -52,11 +52,11 @@ export default class Dao {
                    sms_allow            as sms_allow,
                    push_allow           as push_allow,
                    nightly_push_allow   as nightly_push_allow,
-                   marketing_push_allow as marketing_push_allow
+                   marketing_push_allow as marketing_push_allow,
+                   user_type            as user_type,
+                   user_status          as user_status
             from commerce.user
             where idx > ${lastReadId}
-              AND user_type = 'USER'
-              AND user_status = 'ACTIVE'
             order by idx asc
             limit ${limit}
         `;
