@@ -44,24 +44,21 @@ export default class Dao {
     async selectUsers(lastReadId: number, limit: number = 1000): Promise<RowDataPacket[]> {
         const connection = await this.connect();
         const query: string = `
-            select
-                idx as id,
-                name as name,
-                phone_number as phone_number,
-                email as email,
-                email_allow as email_allow,
-                sms_allow as sms_allow,
-                push_allow as push_allow,
-                nightly_push_allow as nightly_push_allow,
-                marketing_push_allow as marketing_push_allow
-            from
-                commerce.user
-            where
-                idx > ${lastReadId}
-            order by 
-                idx asc
-            limit
-                ${limit}
+            select idx                  as id,
+                   name                 as name,
+                   phone_number         as phone_number,
+                   email                as email,
+                   email_allow          as email_allow,
+                   sms_allow            as sms_allow,
+                   push_allow           as push_allow,
+                   nightly_push_allow   as nightly_push_allow,
+                   marketing_push_allow as marketing_push_allow
+            from commerce.user
+            where idx > ${lastReadId}
+              AND user_type = 'USER'
+              AND user_status = 'ACTIVE'
+            order by idx asc
+            limit ${limit}
         `;
         const [rows, fields] = await connection.query(query);
         return rows as RowDataPacket[];
